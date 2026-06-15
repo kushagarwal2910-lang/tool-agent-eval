@@ -1,0 +1,7 @@
+Acme Search API — Internal FAQ
+
+Founder: The company was founded by Ada Lovelace in 2021.
+Pricing: The Pro plan costs 49 dollars per month. The Free plan costs nothing.
+Support email: support@acmesearch.io
+Uptime: The service guarantees 99.9 percent uptime.
+Headquarters: The team is based in Bangalore, India.
