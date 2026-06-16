@@ -1,14 +1,3 @@
-"""A small LangGraph agent with three real tools.
-
-The agent runs on Groq (same setup as my live support-agent Space) and can use:
-  - web_search : look something up on DuckDuckGo (no API key needed)
-  - read_file  : read a local text file by path
-  - calculator : evaluate a basic math expression (safe, ast-based)
-
-The point of this repo is not the chatbot, it is eval.py, which measures
-whether the agent picks the right tool(s) and returns the right answer.
-"""
-
 import ast
 import operator
 
@@ -47,8 +36,8 @@ def read_file(path: str) -> str:
         return f"Could not read file: {e}"
 
 
-# --- safe arithmetic for the calculator (no eval) ---
-# Only these operators are allowed; anything else raises and the tool reports it.
+# arithmetic for the calculator, done with ast instead of eval() so a tool call
+# can't run arbitrary python. only these ops are allowed, anything else raises.
 _BIN_OPS = {
     ast.Add: operator.add,
     ast.Sub: operator.sub,

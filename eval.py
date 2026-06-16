@@ -1,16 +1,8 @@
-"""Measure the agent across models: for each test case, did it call the right
-tool(s), return an answer containing the expected text, and how much did it
-cost (latency + tokens)?
-
-Run from anywhere:  python eval.py
-Needs GROQ_API_KEY set in the environment.
-"""
-
 import os
 import sys
 import time
 
-# Windows consoles use cp1252 and crash on some unicode the model returns.
+# windows terminal is cp1252 and chokes on some of the unicode the model returns
 sys.stdout.reconfigure(encoding="utf-8")
 # Run relative to this file so the sample_data/ paths always resolve.
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -51,6 +43,7 @@ TEST_CASES = [
      "expected_tool": "read_file", "expected_output_contains": "support@acmesearch.io"},
 
     # --- web_search (live DuckDuckGo, stable-answer questions) ---
+    # TODO: mock these so the suite isn't at the mercy of DuckDuckGo being up
     {"input": "Search the web: who wrote the novel Pride and Prejudice?",
      "expected_tool": "web_search", "expected_output_contains": "Austen"},
     {"input": "Search the web for the capital city of Japan.",
